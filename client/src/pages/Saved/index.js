@@ -2,11 +2,9 @@ import React, { useState, useEffect } from "react";
 import API from "../../utils/API";
 import Container from "../../components/Container";
 import SearchResults from "../../components/SearchResults";
-import Alert from "../../components/Alert";
 
 const Saved = () => {
   const [books, setBooks] = useState([{}]);
-  const [error, setError] = useState("");
 
   useEffect(() => {
     getbooks()
@@ -14,15 +12,7 @@ const Saved = () => {
 
   const getbooks = () => {
     API.findAll()
-      .then(res => {
-        if (res.data.length === 0) {
-          throw new Error("No results found.");
-        }
-        if (res.data.status === "error") {
-          throw new Error(res.data.message);
-        }
-        setBooks(res.data);
-      })
+      .then(res => setBooks(res.data))
       .catch(err => setError(err));
   }
 
@@ -36,9 +26,6 @@ const Saved = () => {
     <div>
       <Container style={{ minHeight: "100vh" }}>
         <h1 className="text-center">Search Google Books</h1>
-        <Alert type="danger" style={{ opacity: error ? 1 : 0, marginBottom: 10 }}>
-          {error}
-        </Alert>
         {books.map((book,index) =>
           <SearchResults
             key ={index}
