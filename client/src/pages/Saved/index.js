@@ -9,6 +9,7 @@ const Saved = () => {
 
   useEffect(() => {
     getbooks()
+    console.log(books)
   }, []);
 
   const getbooks = () => {
