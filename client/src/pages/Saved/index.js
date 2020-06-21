@@ -5,6 +5,7 @@ import SearchResults from "../../components/SearchResults";
 
 const Saved = () => {
   const [books, setBooks] = useState([{}]);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     getbooks()
