@@ -7,7 +7,7 @@ function SearchResults(props) {
       <ul className="list-group search-results">
         <li className="list-group-item">
           <span>
-            <button onClick={props.saveBook} onClick={(event)=> event.target.textContent='SAVED!'} style={props.saveBook ? {display:"block", float:"right"} : {display:"none"}}>Save</button>
+            <button onClick={props.saveBook} style={props.saveBook ? {display:"block", float:"right"} : {display:"none"}}>Save</button>
             <button onClick={props.deleteBook} style={props.deleteBook ? {display:"block", float:"right"} : {display:"none"}}>Delete</button>
             <a href={props.link} style= {{float:"right"}} ><button>View</button></a>
           </span>
